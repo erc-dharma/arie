@@ -116,17 +116,25 @@
            (async () => {
         const response = await fetch('https://api.github.com/repos/erc-dharma/arie/contents/docs');
         const data = await response.json();
-        let htmlString = '<ul>';
+        let htmlString = '';
         for (let file of data) {
           const fileName = file.path.replace('.md', '');
           const fileDisplayName = fileName.split(' ').join(' ').replace('docs/arie_', 'ARIE vol.').replace('.html', '').replace('_', ', ');
           htmlString += `<li class="list-group-item"><a href="${fileName}">${fileDisplayName}</a></li>`;
         }
-        htmlString += '</ul>';
-        document.getElementsByTagName('body')[0].innerHTML = htmlString;
+        document.getElementById('list').innerHTML = htmlString;
       })()
       
     </script>
+            <!--const updateList = (data, filter = '') => {
+            let htmlString = '';
+            for (let file of data.filter(filterFiles(filter)).sort(sortFiles(filter))) {
+            const fileName = file.path.replace('.md', '');
+            const fileDisplayName = fileName.split(' ').join(' ').replace('docs/arie_', 'ARIE vol.').replace('.html', '').replace('_', ', ');
+            htmlString += `<li class="list-group-item"><a href="${fileName}">${fileDisplayName}</a></li>`;
+            }
+            document.getElementById('list').innerHTML = htmlString;
+            }-->
             <!--const filterFiles = (filter) => {
         filter = filter.toLowerCase()
         return (file) => {
