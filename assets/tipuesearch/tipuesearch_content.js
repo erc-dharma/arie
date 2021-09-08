@@ -9,21 +9,21 @@ layout: null
 {%- assign excluded_tags = site.tipue_search.exclude.tags | uniq -%}
 {%- assign excluded_categories = site.tipue_search.exclude.categories | uniq -%}
 {%- assign excluded_taxonomies = excluded_tags | concat: excluded_categories | uniq -%}
-{%- for post in site.posts -%}
-  {%- unless post.exclude_from_search == true or excluded_files contains post.path -%}
+{%- for doc in site.docs -%}
+  {%- unless doc.exclude_from_search == true or excluded_files contains doc.path -%}
     {%- assign has_excluded_taxonomy = false -%}
-    {%- for tag in post.tags -%}
+    {%- for tag in doc.tags -%}
       {%- if excluded_taxonomies contains tag -%}
         {%- assign has_excluded_taxonomy = true -%}
       {%- endif -%}
     {%- endfor -%}
-    {%- for category in post.categories -%}
+    {%- for category in doc.categories -%}
       {%- if excluded_taxonomies contains category -%}
         {%- assign has_excluded_taxonomy = true -%}
       {%- endif -%}
     {%- endfor -%}
     {%- unless has_excluded_taxonomy == true -%}
-      {%- assign index = index | push: post | uniq -%}
+      {%- assign index = index | push: doc | uniq -%}
     {%- endunless -%}
   {%- endunless -%}
 {%- endfor -%}
