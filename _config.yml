@@ -1,10 +1,3 @@
 # Config settings
 title: ARIE Inscriptions
 baseurl: "/arie"
-
-# Search settings
-tipue_search:
-  include:
-    pages: true
-  exclude:
-    files: [index.html, search.html]
