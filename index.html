@@ -110,6 +110,7 @@
                             <a href="https://github.com/erc-dharma/arie">ARIE</a>
                         </h1>
                        <p>Reference pattern used in the files: ARIE/Publication_Year/Appendix_Letter/Appendix_Year/Inscription_Number (page Page_Number)</p>
+                        <p>Number of files in this repository: <b><span id="lenght"></span></b></p>
                         <ul id="list" class="list-group">
                         </ul>
                     </div>
@@ -127,6 +128,7 @@
           htmlString += `<li class="list-group-item"><a href="${fileName}">${fileDisplayName}</a></li>`;
         }
         document.getElementById('list').innerHTML = htmlString;
+        document.getElementById('lenght').innerHTML = data.length;
       })()
 
     </script>
