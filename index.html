@@ -123,8 +123,8 @@
         let htmlString = '';
         for (let file of data) {
           const fileName = file.path.replace('.md', '');
-          let re = /[\w]+\/[a-z]+\_[0-9]([0-9][0-9])\_([0-9]+[0-9\-]*)/
-          const fileDisplayName = fileName.split(' ').join(' ').replace(re, 'ARIE $2 [vol. $1]').replace('.html', '');
+          let re = /[\w]+\/[a-z]+\_[0-9]([0-9][0-9])\_([0-9]+[0-9\-]*)\_[a-z]+([0-9]+[0-9\-]*)/
+          const fileDisplayName = fileName.split(' ').join(' ').replace(re, 'ARIE $2 [ARIE $1] = GO $3').replace('.html', '');
           htmlString += `<li class="list-group-item"><a href="${fileName}">${fileDisplayName}</a></li>`;
         }
         document.getElementById('list').innerHTML = htmlString;
